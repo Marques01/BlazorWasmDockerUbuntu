@@ -14,12 +14,21 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Verificar variáveis de ambiente
+      - name: Verificar se as variáveis estão configuradas
         run: |
-          echo "DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}"
-          echo "DOCKER_PASSWORD=${{ secrets.DOCKER_PASSWORD }}"
-          echo "DOCKER_IMAGE_NAME=${{ secrets.DOCKER_IMAGE_NAME }}"
-          echo "DOCKER_TAGNAME=${{ secrets.DOCKER_TAGNAME }}"
+          if [ -z "${{ secrets.DOCKER_USERNAME }}" ]; then
+            echo "Erro: DOCKER_USERNAME não configurado!"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DOCKER_IMAGE_NAME }}" ]; then
+            echo "Erro: DOCKER_IMAGE_NAME não configurado!"
+            exit 1
+          fi
+          if [ -z "${{ secrets.DOCKER_TAGNAME }}" ]; then
+            echo "Erro: DOCKER_TAGNAME não configurado!"
+            exit 1
+          fi
+          echo "Variáveis configuradas corretamente!"
 
       - name: Login no Docker Hub
         uses: docker/login-action@v2
