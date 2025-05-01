@@ -1,0 +1,11 @@
+﻿version: '3.8'
+
+services:
+  blazorwasm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8085:80"
+    container_name: blazorwasmubuntu
+    restart: unless-stopped
