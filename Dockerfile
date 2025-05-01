@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . ./
 
 # Publica o projeto principal
-RUN dotnet publish BlazorWasmDockerUbuntu.csproj -c Release -o /app/publish
+RUN dotnet publish BlazorApp.csproj -c Release -o /app/publish
 
 # Etapa 2: Usa o Nginx para servir os arquivos do wwwroot
 FROM nginx:alpine
