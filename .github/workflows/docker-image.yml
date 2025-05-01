@@ -27,7 +27,7 @@ jobs:
 
       - name: Build da imagem Docker
         run: |
-          docker build --platform linux/amd64 -t ${{ secrets.DOCKER_USERNAME }}/blazorwasm:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/blazorwasm:latest .
 
       - name: Push da imagem para o Docker Hub
         run: |
