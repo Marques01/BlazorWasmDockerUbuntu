@@ -1,3 +1,10 @@
+.bg-purple {
+    background-color: #7b1df7 !important;
+}
+
+.bg-purple-dark {
+    background-color: #4c0bce !important;
+}
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
