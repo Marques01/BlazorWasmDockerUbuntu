@@ -1,11 +1,17 @@
-﻿version: '3.8'
+version: '3.8'
 
 services:
   blazorwasm:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: blazorwasm
     ports:
       - "8085:80"
-    container_name: blazorwasmubuntu
     restart: unless-stopped
+
+    # opcional (melhor prática)
+    deploy:
+      resources:
+        limits:
+          memory: 512M
